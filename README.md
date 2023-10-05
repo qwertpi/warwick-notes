@@ -1,5 +1,6 @@
 # warwick-notes
 
+Yet another set of Warwick Computer Sciences notes!  
 My revision materials for the modules I took
 
 ## Disclaimers
