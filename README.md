@@ -19,9 +19,11 @@ Images whose copyright belongs to DCS have been removed.
 
 [CS130 Notes](Y1/CS130.pdf)  
 [CS130 Quiz](https://app.studius.ai/decks/b4953e89e933d50c8c0bbf76da7f5112?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
+CS130 Recomended Reading: How to Prove It by by Daniel Velleman  
 
 [CS131 Notes](Y1/CS131.pdf)  
 [CS131 Quiz](https://app.studius.ai/decks/e6b6297a7e3472f8b59ef8233ad84afb?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
+CS131 Recomened Reading or Watching: https://www.3blue1brown.com/topics/linear-algebra and https://www.3blue1brown.com/topics/calculus  
 
 [CS132 Notes](Y1/CS132.pdf)  
 [CS132 Quiz](https://app.studius.ai/decks/db693124565718bffacd91f8c287af43?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
@@ -34,6 +36,7 @@ Images whose copyright belongs to DCS have been removed.
 [CS141 Notes](Y1/CS141.pdf)  
 
 [IB104 Notes](Y1/IB104.pdf)  
+IB104 Recomened Watching: https://www.youtube.com/watch?v=pWeEz3O-ZRg and https://www.youtube.com/watch?v=E72DWgKP_1Y  
 
 
 
