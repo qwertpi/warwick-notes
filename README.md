@@ -55,4 +55,3 @@ Images copied from module materials have been removed for copyright reasons.
 [IB207 notes](Y2/IB207.pdf)  
 [IB207 Quiz](https://app.studius.ai/decks/857ac2d5c1a2dceceb3bf47ba0798553?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### MA252 (coming eventually)
-#### MA267 (coming eventually)
