@@ -24,8 +24,8 @@ Images copied from module materials have been removed for copyright reasons.
 #### CS131
 [CS131 Notes](Y1/CS131.pdf)  
 [CS131 Quiz](https://app.studius.ai/decks/e6b6297a7e3472f8b59ef8233ad84afb?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
-[External resource (Videos/Blog): Esscence of linear algebra by 3Blue1Brown](https://www.3blue1brown.com/topics/linear-algebra)  
-[External resource (Videos/Blog): Esscence of calculus by 3Blue1Brown](https://www.3blue1brown.com/topics/calculus)
+[External resource (Videos/Blog): Essence of linear algebra by 3Blue1Brown](https://www.3blue1brown.com/topics/linear-algebra)  
+[External resource (Videos/Blog): Essence of calculus by 3Blue1Brown](https://www.3blue1brown.com/topics/calculus)
 #### CS132
 [CS132 Notes](Y1/CS132.pdf)  
 [CS132 Quiz](https://app.studius.ai/decks/db693124565718bffacd91f8c287af43?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
@@ -36,11 +36,11 @@ Images copied from module materials have been removed for copyright reasons.
 [CS140 Quiz](https://app.studius.ai/decks/c93c2a144d16e44f9b4fa6ab76ffcf5e?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### CS141
 [CS141 Notes](Y1/CS141.pdf)  
-[External resource (Video): Haskell is useless by Simon Peyton Jones (tounge in cheek but motivates need for controlled effects)](https://www.youtube.com/watch?v=iSmkqocn0oQ)  
+[External resource (Video): Haskell is useless by Simon Peyton Jones (tongue in cheek but motivates need for controlled effects)](https://www.youtube.com/watch?v=iSmkqocn0oQ)  
 #### IB104
 [IB104 Notes](Y1/IB104.pdf)  
 [External resource (Video): Simplex Algorithm: What's actually going on by TLMaths](https://www.youtube.com/watch?v=pWeEz3O-ZRg)  
-[External resource (Video): The Art of Linear Programming by Tom S (intuition for dualiy)](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
+[External resource (Video): The Art of Linear Programming by Tom S (intuition for duality)](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
 
 ### Year 2 (2023/24)
 #### CS241
