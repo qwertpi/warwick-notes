@@ -10,7 +10,7 @@ I will not be publishing until I have finished the module and probably won't upd
 Images copied from module materials have been removed for copyright reasons.
 
 ## Index
-### Year 1
+### Year 1 (2022/23)
 #### CS118  
 [Notes](Y1/CS118.pdf)  
 [Quiz](https://app.studius.ai/decks/8b9d4f443b486cbfd2156fc9b293e191?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
@@ -42,16 +42,16 @@ Images copied from module materials have been removed for copyright reasons.
 [External resource (Video): Simplex Algorithm: What's actually going on by TLMaths](https://www.youtube.com/watch?v=pWeEz3O-ZRg)  
 [External resource (Video): The Art of Linear Programming by Tom S (intuition for dualiy)](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
 
-### Year 2
-#### CS241 (coming eventually)
-#### CS255 (coming eventually)
-#### CS258 (coming eventually)
-#### CS259 (coming eventually)
-#### CS260 (coming eventually)
-#### CS261 (remaining coming in July)
+### Year 2 (2023/24)
+#### CS241
+#### CS255
+#### CS258
+#### CS259
+#### CS260
+#### CS261
 [My tips for the development phase (including zero to hero with Git)](Y2/CS261_DevTips.pdf)  
-#### CS262 (coming eventually)
+#### CS262
 #### IB207
 [IB207 notes](Y2/IB207.pdf)  
 [IB207 Quiz](https://app.studius.ai/decks/857ac2d5c1a2dceceb3bf47ba0798553?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
-#### MA252 (coming eventually)
+#### MA252
