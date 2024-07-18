@@ -44,14 +44,25 @@ Images copied from module materials have been removed for copyright reasons.
 
 ### Year 2 (2023/24)
 #### CS241
+[CS241 Notes](Y2/CS241.pdf)  
 #### CS255
+[CS255 Notes](Y2/CS255.pdf)  
 #### CS258
+[CS258 Notes](Y2/CS258.pdf)  
 #### CS259
+[CS259 Notes](Y2/CS259.pdf)  
+[Closure properties quiz](https://app.studius.ai/decks/dda0251b15d3d9c18b89256831f5770d?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
 #### CS260
+[CS260 Notes](Y2/CS260.pdf)  
+[Master theorem and reductions quiz](https://app.studius.ai/decks/feb883d42e048e5df6ea41794b7a6b4e?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
 #### CS261
 [My tips for the development phase (including zero to hero with Git)](Y2/CS261_DevTips.pdf)  
+[CS261 Notes](Y2/CS261.pdf)  
+[UML Quiz](https://app.studius.ai/decks/d1a5bafe5cbaf9f6c373d61bf21b131f?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
 #### CS262
+[CS262 Notes](Y2/CS262.pdf)  
 #### IB207
 [IB207 notes](Y2/IB207.pdf)  
 [IB207 Quiz](https://app.studius.ai/decks/857ac2d5c1a2dceceb3bf47ba0798553?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### MA252
+[MA252 Notes](Y2/MA252.pdf)  
