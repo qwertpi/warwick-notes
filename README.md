@@ -40,29 +40,37 @@ Images copied from module materials have been removed for copyright reasons.
 #### IB104: Mathematical Programming 1
 [IB104 Notes](Y1/IB104.pdf)  
 [External resource (Video): Simplex Algorithm: What's actually going on by TLMaths](https://www.youtube.com/watch?v=pWeEz3O-ZRg)  
-[External resource (Video): The Art of Linear Programming by Tom S (intuition for duality)](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
 
 ### Year 2 (2023/24)
 #### CS241: Operating Systems and Computer Networks
 [CS241 Notes](Y2/CS241.pdf)  
+[External resource (Webpage): Everything you need to know about pointers in C by Peter Hosey](https://boredzo.org/pointers/)  
 #### CS255: Artificial Intelligence
 [CS255 Notes](Y2/CS255.pdf)  
 #### CS258: Database Systems
 [CS258 Notes](Y2/CS258.pdf)  
+[External resource (Website): SQL Reference by w3resource](https://www.w3resource.com/sql/tutorials.php)  
 #### CS259: Formal Languages
 [CS259 Notes](Y2/CS259.pdf)  
-[Closure properties quiz](https://app.studius.ai/decks/dda0251b15d3d9c18b89256831f5770d?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
+[Closure properties Quiz](https://app.studius.ai/decks/dda0251b15d3d9c18b89256831f5770d?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
+[External resource (Video): CYK Algorithm Made Easy by EducationAboutStuff](https://www.youtube.com/watch?v=VTH1k-xiswM)  
+[External resource (Video): Pumping Lemma for Context-Free Languages by EasyTheory](https://www.youtube.com/watch?v=-UH9L2sJpPQ)  
+[External resource (Webtool): DFA from Regex Calculator by CyberZHG](https://cyberzhg.github.io/toolbox/min_dfa)  
 #### CS260: Algorithms
 [CS260 Notes](Y2/CS260.pdf)  
-[Master theorem and reductions quiz](https://app.studius.ai/decks/feb883d42e048e5df6ea41794b7a6b4e?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
+[Master theorem and reductions Quiz](https://app.studius.ai/decks/feb883d42e048e5df6ea41794b7a6b4e?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
+[External resource (Book): Algorithms by Jeff Erickson](https://jeffe.cs.illinois.edu/teaching/algorithms/book/Algorithms-JeffE.pdf)  
 #### CS261: Software Engineering
 [My tips for the development phase (including zero to hero with Git)](Y2/CS261_DevTips.pdf)  
 [CS261 Notes](Y2/CS261.pdf)  
-[UML Quiz](https://app.studius.ai/decks/d1a5bafe5cbaf9f6c373d61bf21b131f?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)
+[UML Quiz](https://app.studius.ai/decks/d1a5bafe5cbaf9f6c373d61bf21b131f?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
+[External resource (Website): The Catalog of Design Patterns by Alexander Shvets](https://refactoring.guru/design-patterns/catalog)  
 #### CS262: Logic and Verification
 [CS262 Notes](Y2/CS262.pdf)  
+[External resource (Book/Blog): Learn Prolog Now! by Patrick Blackburn, Johan Bos, and Kristina Striegnitz](https://www.let.rug.nl/bos/lpn//lpnpage.php?pageid=online)  
 #### IB207: Mathematical Programming 2
-[IB207 notes](Y2/IB207.pdf)  
+[IB207 Notes](Y2/IB207.pdf)  
 [IB207 Quiz](https://app.studius.ai/decks/857ac2d5c1a2dceceb3bf47ba0798553?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### MA252: Combinatorial Optimisation
 [MA252 Notes](Y2/MA252.pdf)  
+[External resource (Video): The Art of Linear Programming by Tom S](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
