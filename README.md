@@ -1,12 +1,15 @@
 # warwick-notes
 
 Yet another set of Warwick Computer Sciences notes!  
-My revision materials for the modules I took.
+My revision materials for the modules I took.  
+
+## Tip jar
+You are all probably fellow broke students but just in case anybody is feeling particuarly kind:  
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E61FWEAC)
 
 ## Disclaimers
 
 No guarantees are provided as to the accuracy or completeness of these notes.  
-I will not be publishing until I have finished the module and probably won't update the module after this point.  
 Images copied from module materials have been removed for copyright reasons.
 
 ## Index
@@ -74,3 +77,21 @@ Images copied from module materials have been removed for copyright reasons.
 #### MA252: Combinatorial Optimisation
 [MA252 Notes](Y2/MA252.pdf)  
 [External resource (Video): The Art of Linear Programming by Tom S](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
+### Year 3 (2024/25)
+#### CS301: Complexity of Algorithms
+Coming soon
+#### CS331: Neural Computing
+Coming soon
+#### CS349: Principles of Programming Languages
+Coming soon
+#### CS352: Project Management for Computer Scientists
+Coming soon
+#### CS356: Approximation and Randomised Algorithms
+Coming soon
+#### CS359: Computational Social Choice
+Coming soon
+### Informally studied
+#### CS275: Probability and Statistics (2024/25 in-person lectures)
+Coming soon
+#### CS429: Data Mining ([2020/21 online lectures](https://www.youtube.com/playlist?list=PL9IcorxiyRbASB9DXjoWnBJO9RSKyzM2N), and personal reflections on more recent developments)
+Coming soon
