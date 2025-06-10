@@ -84,7 +84,11 @@ Images copied from module materials have been removed for copyright reasons.
 [External resource (Academic publication): Classic Nintendo games are (computationally) hard by Greg Aloupis, Erik D. Demaine, Alan Guo, and Giovanni Viglietta](https://www.sciencedirect.com/science/article/pii/S0304397515001735)  
 [External resource (Lecture video): Simulating Time With Square-Root Space by Ryan Williams](https://www.youtube.com/watch?v=1qwDO5ulUFs)  
 #### CS331: Neural Computing
-Coming soon
+[CS331 Notes](Y3/CS331.pdf)  
+[External resource (Video): The Foundations of Deep Learning by Geoffrey Hinton](https://www.youtube.com/watch?v=zl99IZvW7rE)  
+[External resource (Academic publication): Learning representations by back-propagating errors by David E. Rumelhart, Geoffrey E. Hinton, and Ronald J. Williams](https://www.nature.com/articles/323533a0)  
+[External resource (Academic publication): Deep learning by Yann LeCun, Yoshua Bengio, and Geoffrey Hinton](https://www.nature.com/articles/nature14539)  
+[External resource (Blogpost): Mathematics of Backpropagation by Brian Dolhansky](https://www.briandolhansky.com/blog/2013/9/27/artificial-neural-networks-backpropagation-part-4)  
 #### CS349: Principles of Programming Languages
 Coming soon
 #### CS352: Project Management for Computer Scientists
