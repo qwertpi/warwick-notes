@@ -79,7 +79,10 @@ Images copied from module materials have been removed for copyright reasons.
 [External resource (Video): The Art of Linear Programming by Tom S](https://www.youtube.com/watch?v=E72DWgKP_1Y)  
 ### Year 3 (2024/25)
 #### CS301: Complexity of Algorithms
-Coming soon
+[CS301 Notes](Y3/CS301.pdf)  
+[External resource (Lecture transcript): P, NP, and Friends by Scott Aaronson](https://scottaaronson.com/democritus/lec6.html)  
+[External resource (Academic publication): Classic Nintendo games are (computationally) hard by Greg Aloupis, Erik D. Demaine, Alan Guo, and Giovanni Viglietta](https://www.sciencedirect.com/science/article/pii/S0304397515001735)  
+[External resource (Lecture video): Simulating Time With Square-Root Space by Ryan Williams](https://www.youtube.com/watch?v=1qwDO5ulUFs)  
 #### CS331: Neural Computing
 Coming soon
 #### CS349: Principles of Programming Languages
