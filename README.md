@@ -96,7 +96,10 @@ Images copied from module materials have been removed for copyright reasons.
 [External resource (Academic publication): F-bounded polymorphism for object-oriented programming by Peter Canning, William Cook, Walter Hill, Walter Olthoff, and John C. Mitchell](https://dl.acm.org/doi/10.1145/99370.99392)  
 [External resource (Source code): Bird monickered combinators in Haskell by Stephen Peter Tetley](https://hackage.haskell.org/package/data-aviary-0.4.0/docs/src/Data-Aviary-Birds.html)  
 #### CS352: Project Management for Computer Scientists
-Coming soon
+[CS352 Notes](Y3/CS352.pdf)  
+[External resource (Blogpost): What is Scrumban? by Corey Ladas](https://agilealliance.org/scrumban/)  
+[External resource (Video): Scrum to Scrumban in 6 Steps by Gary Straughan](https://www.youtube.com/watch?v=fgT4AaKcBUA)  
+[External resource (Manga): The Five Dysfunctions of a Team: An Illustrated Leadership Fable by Patrick M. Lencioni and Kensuke Okabayashi](https://ebookcentral.proquest.com/lib/warw/detail.action?docID=832248)  
 #### CS356: Approximation and Randomised Algorithms
 Coming soon
 #### CS359: Computational Social Choice
