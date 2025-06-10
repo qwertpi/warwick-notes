@@ -90,7 +90,11 @@ Images copied from module materials have been removed for copyright reasons.
 [External resource (Academic publication): Deep learning by Yann LeCun, Yoshua Bengio, and Geoffrey Hinton](https://www.nature.com/articles/nature14539)  
 [External resource (Blogpost): Mathematics of Backpropagation by Brian Dolhansky](https://www.briandolhansky.com/blog/2013/9/27/artificial-neural-networks-backpropagation-part-4)  
 #### CS349: Principles of Programming Languages
-Coming soon
+[CS349 Notes](Y3/CS349.pdf)  
+[External resource (Magazine article/Blogpost): Peter Landin: Elegance from Logic by Paul Curzon](https://cs4fn.blog/2025/02/08/peter-landin-elegance-from-logic/)  
+[External resource (Book chapter): The Curry-Howard Correspondence by Michael R. Clarkson et al.](https://cs3110.github.io/textbook/chapters/adv/curry-howard.html)  
+[External resource (Academic publication): F-bounded polymorphism for object-oriented programming by Peter Canning, William Cook, Walter Hill, Walter Olthoff, and John C. Mitchell](https://dl.acm.org/doi/10.1145/99370.99392)  
+[External resource (Source code): Bird monickered combinators in Haskell by Stephen Peter Tetley](https://hackage.haskell.org/package/data-aviary-0.4.0/docs/src/Data-Aviary-Birds.html)  
 #### CS352: Project Management for Computer Scientists
 Coming soon
 #### CS356: Approximation and Randomised Algorithms
