@@ -102,7 +102,8 @@ Images copied from module materials have been removed for copyright reasons.
 - [External resource (Video): Scrum to Scrumban in 6 Steps by Gary Straughan](https://www.youtube.com/watch?v=fgT4AaKcBUA)  
 - [External resource (Manga): The Five Dysfunctions of a Team: An Illustrated Leadership Fable by Patrick M. Lencioni and Kensuke Okabayashi](https://ebookcentral.proquest.com/lib/warw/detail.action?docID=832248)  
 #### CS356: Approximation and Randomised Algorithms
-Coming soon
+- [CS356 Notes](Y3/CS356.pdf)  
+- [CS356 Quiz](https://app.studius.ai/decks/d9747d1e8e16a13fff097749f17a18a0?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### CS359: Computational Social Choice
 Coming soon
 ### Informally studied
