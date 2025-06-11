@@ -97,6 +97,7 @@ Images copied from module materials have been removed for copyright reasons.
 - [External resource (Source code): Bird monickered combinators in Haskell by Stephen Peter Tetley](https://hackage.haskell.org/package/data-aviary-0.4.0/docs/src/Data-Aviary-Birds.html)  
 #### CS352: Project Management for Computer Scientists
 - [CS352 Notes](Y3/CS352.pdf)  
+- [CS352 Quiz](https://app.studius.ai/decks/9a957e3ffa81ccf0f5f084fa33b2cba5?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 - [External resource (Blogpost): What is Scrumban? by Corey Ladas](https://agilealliance.org/scrumban/)  
 - [External resource (Video): Scrum to Scrumban in 6 Steps by Gary Straughan](https://www.youtube.com/watch?v=fgT4AaKcBUA)  
 - [External resource (Manga): The Five Dysfunctions of a Team: An Illustrated Leadership Fable by Patrick M. Lencioni and Kensuke Okabayashi](https://ebookcentral.proquest.com/lib/warw/detail.action?docID=832248)  
