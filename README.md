@@ -105,7 +105,8 @@ Images copied from module materials have been removed for copyright reasons.
 - [CS356 Notes](Y3/CS356.pdf)  
 - [CS356 Quiz](https://app.studius.ai/decks/d9747d1e8e16a13fff097749f17a18a0?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 #### CS359: Computational Social Choice
-Coming soon
+- [CS359 Notes](Y3/CS359.pdf)  
+- [External resource (Academic publication): Justified Representation in Approval-Based Committee Voting by Haris Aziz, Markus Brill, Vincent Conitzer, Edith Elkind, Rupert Freeman, and Toby Walsh](https://arxiv.org/abs/1407.8269)  
 ### Informally studied
 #### CS275: Probability and Statistics (2024/25 in-person lectures)
 Coming soon

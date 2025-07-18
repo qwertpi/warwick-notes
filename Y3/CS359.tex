@@ -1,0 +1,565 @@
+\documentclass[20pt,a4paper,landscape]{extarticle}
+\usepackage[margin=1.25in]{geometry}
+\usepackage{placeins}
+\usepackage{latexsym}
+\usepackage{marvosym}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[UKenglish]{babel}
+\usepackage[UKenglish]{isodate}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{titletoc}
+\usepackage{listings}
+\usepackage{dsfont}
+\lstset{
+  basicstyle=\ttfamily,
+  mathescape
+}
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{xurl}
+\input{glyphtounicode}
+\pdfgentounicode=1
+\usepackage[all]{nowidow}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\newcommand{\ind}{\perp\!\!\!\!\perp}
+\DeclareMathOperator*{\argmax}{arg\,max\:}
+\DeclareMathOperator*{\argmin}{arg\,min\:}
+\begin{document}
+\tableofcontents
+\clearpage
+\begin{flushleft}
+\section{Foundations}
+\subsection{Choice}
+\subsubsection{Foundations}
+\begin{itemize}
+\item Let $U$ be a finite set of $m$ alternatives. The set of all feasible sets from the universe $U$ = $F(U)$  = all non-empty subsets of $U$ = $\mathfrak{P}(U)\setminus\{\emptyset\}$
+\item{A choice function is a function $S$: $F(U) \mapsto F(U)$ such that $\forall A \in F(U); S(A) \subseteq A$}
+\clearpage
+\item{A preference relation $R$ is a reflexive ($\forall x; xRx)$ and complete ($\forall x,y \in U; xRy \lor yRx)$ binary relation on $U$.\\
+Interpretation: \textbf{$aRb \Leftrightarrow a$ is at least as good as $b$ (intuitively $\geq)$}}
+\item{Each preference relation $R$ can be partitioned into the strict part $P$ and the indifferent part $I$:}
+\begin{itemize}
+    \item \textbf{$aPb \Leftrightarrow R$ is asymmetric on $a, b$} ($aRb \land (b,a) \notin R$)\\
+    \textbf{(intuitively $>$)}
+    \item \textbf{$aIb \Leftrightarrow R$ is symmetric on $a, b$} ($aRb \land bRa$) \textbf{(intuitively $=$)}
+\end{itemize}
+\item A preference relation (or part thereof) can be represented by a graph where there is an edge from $x$ to $y$ iff $y$ is (strictly) preferred to $x$ --- $E=\{\underline{(y, x)}: (x, y) \in P\}$
+\end{itemize}
+\clearpage
+\subsubsection{Acyclicity}
+\begin{itemize}
+\item{\textbf{$R$ is transitive $= (xRy \land yRz) \Rightarrow xRz$}. By induction, this extends to more than 2}
+\item{\textbf{$R$ is quasi-transitive $= (xPy \land yPz) \Rightarrow xPz$}. By induction, this extends to more than 2}
+\item{\textbf{$R$ is acyclic $= (x_1Px_2 \land ... \land x_{k - 1}Px_k) \Rightarrow x_1Rx_k$}. Recall that $x_1Rx_i \Rightarrow (x_i, x_1) \notin P$ by the definition of strict preference}
+\item Proposition: transitive $\Rightarrow$ quasi-transitive $\Rightarrow$ acyclic\\
+Proof:\\
+transitive $\Rightarrow$ quasi-transitive: By the transitivity, $xRz$. To show that $xPz$, it remains to show that $(z, x) \notin R$. Assume for the sake of contradiction that $zRx$. Then, by transitivity, as $xPy$ and so $xRy$, $zRy$. However, $yPz$, and so $(z, y) \notin R$?!\\
+quasi-transitive $\Rightarrow$ acyclic: By the quasi-transitivity, and an easy induction, $x_1Px_k$. Thus, $x_1Rx_k$ as required.
+\item{\textbf{$\textrm{Max}(R, A) = \{x \in A: \forall y \in A; (y, x) \notin P\}$ = the vertices, in the graph of the P relation with domain restricted to A, which have no incoming edges}}
+\item Proposition: \textbf{$R$ is acyclic $\Leftrightarrow \forall A \in F(U); \textrm{Max}(R, A) \neq \emptyset$}\\
+Proof:\\
+$\Leftarrow$: Pick arbitrary $x_1, ..., x_n$ such that $x_1Px_2, ..., x_{n - 1}Px_n$. Then, $\forall k \in \{2, ..., n\}; x_k \notin \textrm{Max}(R, {x_1, ..., x_n})$ as $x_{k-1}Px_k$. Thus, as by the hypothesis Max$(R, {x_1, ..., x_n}) \neq \emptyset$, Max$(R, {x_1, ..., x_n}) = \{x_1\}$. Thus, $x_1Rx_n$ as required\\
+$\Rightarrow$: We will show the contrapositive: If Max$(R, A) = \emptyset$, then $R$ is not acyclic. Pick arbitrary $R$, $A$ such that Max$(R, A) = \emptyset$. Pick arbitrary $x_1 \in A$. By the hypothesis, $\exists x_2: x_2Px_1 \land \exists x_3: x_3Px_2 \land ...$.\\
+Deduce that, (as there are only finitely many ($m$) alternatives) for some $i < k \leq m$ we obtain a sequence $x_1, x_2, ..., x_k$ such that $x_kPx_{k-1}...Px_i...Px_1$ and $x_k=x_i$. Thus, $x_{k-1}P{x_i}$. Moreover, as $x_kPx_{k-1}$ and $x_k=x_i$, $x_iPx_{k-1}$ and so we have witnessed a cycle as required.
+\end{itemize}
+\clearpage
+\subsubsection{Rationalizability}
+\begin{itemize}
+\item{\textbf{A preference relation $R$ rationalizes a choice function $S$ $\Leftrightarrow \forall A \in F(U); S(A) = \textrm{Max}(R, A)$}. Thus, R gives rise to a rational choice function only if R is acyclic}
+\item{\textbf{Base relation of $S$ = $R_S = \{(x, y): x \in S(\{x, y\})\}$}. Proposition: \textbf{$S$ is rationalizable $\Leftrightarrow R_S$ rationalizes it}\\
+Proof: The if direction immediately follows from the definition of rationalization, so we only need to show the only if direction. Assume $S$ is rationalizable. Then, there exists some $R$ that rationalizes it. We will show that necessarily $R = R_S$. $\forall x, y; xRy \Leftrightarrow x \in \textrm{Max}(R, \{x, y\}) \Leftrightarrow x \in S({x, y}) \Leftrightarrow xR_sy$}
+\end{itemize}
+\clearpage
+\subsubsection{Rankings}
+\begin{itemize}
+\item A preference relation is called a ranking iff it is transitive
+\item A ranking is called a strict ranking iff it is anti-symmetric.\\
+A ranking is a weak ranking if it is not strict
+\item A choice function is transitively rationalizable iff it is rationalizable by a transitive preference relation i.e. a (possibly weak) ranking
+\end{itemize}
+\clearpage
+\subsection{Social choice}
+\subsubsection{The social choice setting}
+\begin{itemize}
+\item $N = \{1, ..., n\}$ = the set of voters
+\item $R(U)$ = the set of all transitive preference relations ((possibly weak) rankings) over $U$
+\item{$R_N \in R(U)^n$. $R_N$ = preference profile = a vector in which each element is the ranking relation $R_i$ for a voter $i$}
+\end{itemize}
+\clearpage
+\subsubsection{SCFs}
+\begin{itemize}
+\item A social choice function (SCF) is a $f: R(U)^n \times F(U) \mapsto F(U)$ such that $\forall R_N, A; f(R_N, A) \subseteq A$.
+\item When partially applied by fixing only the first argument (a preference profile), a social choice function gives a choice function
+\item{A SCF is (transitively) rationalizable iff for every preference profile the induced choice function is (transitively) rationalizable}
+\item{Proposition: Plurality (FPTP) is not a rationalizable SCF\\
+Proof: $R_N = (3abc, 3bca, 2cba)$ is a witness. Let $S = f(R_N)$. Then, $R_S = \{(b, a), (c, a), (b, c)\}$ but this does not rationalise $S$ as $\textrm{Max}(R_S, \{a, b, c\}) = \{b\} \neq S(\{a,b,c\}) = \{a, b\}$}
+\end{itemize}
+\clearpage
+\subsection{Axioms}
+\begin{itemize}
+\item An axiom is a desirable property of a voting rule
+\item \textit{We will attempt to morally classify axioms as non-negotiable reasonableness properties and trade-offable fairness properties}
+\item \textit{Reasonableness:} \textbf{Anonymity = voters} are treated equally i.e. \textbf{can be relabelled without affecting outcome} = if we permute the order of the voters' relations in the preference profile (not affecting the relation itself, only its position in the vector of relations) the choice doesn't change
+    \begin{itemize}
+    \item \textbf{$G \subseteq N$ is a weakly decisive group iff $\forall A, R_N; \forall x, y \in U;$\\
+    ($\forall i \in G; x P_i y) \Rightarrow (y \in f(R_N, A) \Rightarrow x \in f(R_N, A))$}
+    \item \textbf{No weak dictators = there does not exist a weakly decisive group $G$ such that ($|G|=1$)}
+    \item \textbf{$G \subseteq N$ is a decisive group iff $\forall A, R_N; \forall x, y \in U;$\\
+    ($\forall i \in G; x P_i y) \Rightarrow y \notin f(R_N, A)$}
+    \item \textbf{Non-dictatorship = there does not exist a decisive group $G$ such that ($|G|=1$)}
+    \item \textbf{No collegium = the intersection of all decisive groups is empty}
+    \item \textbf{No oligarchy = no decisive group contains only weak dictators}
+    \item With a little thought, it is possible to see that \textbf{anonymity $\Rightarrow$ no decisive group $G$ such that ($|G|<n$) $\Rightarrow$ non-dictatorship}
+    \item It is possible to see that (Pareto-optimal and no collegium) $\Rightarrow$ no weak dictators [Pareto-optimal requires that a weak dictator must be in every decisive group and so would be a collegium] $\Rightarrow$ no oligarchy [definition of oligarchy] $\Rightarrow$ non-dictatorship [dictatorship $\Rightarrow$ oligarchy as a set containing only a dictator is an oligarchy]
+    \end{itemize}
+\item \textit{Reasonableness:} \textbf{Neutrality = alternatives} are treated equally i.e. \textbf{can be relabelled without affecting outcome} = relabelling alternatives in all preference relations causes the choice to be the same after relabelling
+    \begin{itemize}
+    \item \textbf{Independence of irrelevant alternatives (IIA) = $\forall A, R_N, R'_N; (\forall i \in N; {R_{i}}_{\restriction A} = {R'_{i}}_{\restriction A}) \Rightarrow f(R_N, A) = f(R'_N, A)$}
+    \item \textbf{neutrality $\Rightarrow$ IIA} [I have been unable to easily prove this]
+    \end{itemize}
+\item \textit{Fairness:} \textbf{Monotonicity = if preferences change only so that a chosen alternative is ranked higher, then it will still be chosen}
+    \begin{itemize}
+    \item Formally: $\forall R_N, R'_N; \exists i \in N: \exists a \in U:$\\
+$((\forall j \neq i; R_j = R'_j) \land$\\
+$(\forall x, y \in U \setminus \{a\}; xR_iy \Leftrightarrow xR'_iy \land aR_iy \Rightarrow aR'_iy \land aP_iy \Rightarrow aP'_iy)$\\
+$)\Rightarrow ((a \in f(R_N, A) \land R_{i|A} \neq R'_{i|A}) \Rightarrow a \in f(R'_N, A))$
+    \item \textbf{Positive responsiveness strengthens the conclusion to ``is uniquely chosen''} ($f(R'_N, A) = \{a\}$).\\
+    Intuition for this strengthening: The only thing that has changed in the ranking is that $a$ has risen, thus any tie that was occurring should have been broken
+    \end{itemize}
+\item \textit{Fairness:} \textbf{Pareto-optimality = An alternative will not be chosen if there exists an alternative that \underline{all} (not merely a majority of) voters rank higher than it}
+\item \textit{Fairness:} \textbf{Condorcet extension = If the feasible set has a Condorcet winner, then it is \underline{uniquely} chosen}
+    \begin{itemize}
+        \item \textbf{$x$ is a Condorcet winner in $A$} iff $x$ wins every pairwise comparison with the other alternatives \textbf{iff $\forall y \in A \setminus \{x\}$. $x P_M y$}. Deduce that, if there is a Condorcet winner, then it is unique.
+    \end{itemize}
+\item \textit{Reasonableness:} Cancellation = $\forall A, R_N; (\forall x, y \in A; n_{xy} = n_{yx} \Rightarrow f(R_N, A) = A)$
+\item \textit{Reasonableness:} Continuity = $\forall U, A, N, N'; \forall R_N \in R(U);$\\
+$\forall R_{N'} \in R(U)^{N'}; (N \cap N' = \emptyset \land \exists a \in A: f(R_N, A) = \{a\} \land$\\
+$\exists b \in A: f(R_{N'}, A) = \{b\}) \Rightarrow \exists k \in \mathbb{N}: f(kR_N \cup R_{N'}, A) = \{a\}$ = if a subset of the electorate is diluted down to a sufficiently small proportion then removing them does not affect the choice
+\item \textit{Fairness:} \textbf{Reinforcement = If there is a pair of disjoint electorates that both share one or more chosen alternatives, then those alternatives \underline{and only} those alternatives are chosen by the union of those electorates} = $\forall U, A, N, N'; \forall R_N \in R(U)^N;$\\
+$\forall R_{N'} \in R(U)^{N'}; (N \cap N' = \emptyset \land f(R_N, A) \cap f(R_{N'}, A) \neq \emptyset) \Rightarrow$\\
+$f(R_N \cup R_{N'}, A) = f(R_N, A) \cap f(R_{N'}, A)$
+\item \textit{Straight up impossible:} Resoluteness = always choose exactly one alternative
+    \begin{itemize}
+    \item Theorem (Moulin, 1983): Let preferences be strict. Then, there exists an anonymous, neutral, Pareto-optimal, and resolute SCF if and only if $n$ is not divisible by any $2, ..., m$\\
+    Proof sketch:\\
+    If: Instant-run-off is anonymous, neutral, and Pareto-optimal. With a little thought it can be seen that if $n$ is not divisible by any $2, ..., m$ then instant run is resolute\\
+    Only if: If $n$ is divisible by some $2, ..., m$ then a tie may occur. To break a tie (to get resoluteness) while maintaining Pareto-optimality, we must violate anonymity or resoluteness\\
+    \end{itemize}
+\end{itemize}
+\subsection{Arrovian impossibility theorems}
+\begin{itemize}
+\item $\textrm{p}_2$ = the axiom $\textrm{p}$ with its universal quantifier weakened to $|A| \leq 2$
+    \begin{itemize}
+    \item Deduce that $\textrm{p} \Rightarrow \textrm{p}_2$. Thus, $\neg\textrm{p}_2 \Rightarrow \neg\textrm{p}$, and so an impossibility theorem in terms of $\textrm{p}_2$ is a stronger result
+    \end{itemize}
+\item Let $N_{ab} = \{i \in N: aR_ib\}$ and $n_{ab} = |N_{ab}|$. Define $x R_M y \Leftrightarrow n_{xy} \geq n_{yx}$. We call the SCF induced (i.e. rationalised) by $R_M$ majority rule
+\item \textbf{Theorem (May, 1952): If there are only two alternatives, then majority rule is the only SCF that is anonymous, neutral, and positive responsive}\\
+Proof: Assume without loss of generality that $n_{ab} \leq n_{ba}$. Deduce that positive responsiveness requires that b is chosen.\\
+If $n_{ab} = n_{ba}$, by neutrality we must chose $a$ alongside $b$.\\
+Otherwise, our $n_{ab} < n_{ba}$ can be considered (wlog) to have arisen from an $n'_{ab} = n'_{ba} = n_{ab}$ by a series of alternations that obey the conditions for monotonicity to be applicable. Thus, by positive responsiveness, $b$ must be uniquely chosen.\\
+We have demonstrated that we must chose $\argmax$($n_{ab}, n_{ba}$) unless they are equal in which case we must chose both. This is the definition of majority rule.\\
+This theorem will be invoked in a few subsequent proofs
+\clearpage
+\item Theorem (Condorcet, 1785): Every anonymous, neutral, and $\textrm{positive-responsive}_2$ SCF is not rationalizable when $m \geq 3$ and $n \geq 3$
+Proof: We will consider the infamous Condorcet cycle profile $(1abc, 1bca, 1cba)$. Assume for the sake of contradiction that there exists an SCF $f$ for this preference profile that obeys these axioms and is rationalizable even though $m = n = 3$. Consider its base relation $R_f$, which must rationalise it. Consider the function $f'$ which is $f$ restricted to feasible sets of size 2. Deduce that $R_f = R_{f'}$ (as the base relation only considers pairs anyway). Deduce that May's theorem is applicable to $f'$ and so $R_{f'} = R_M$ for us to have our axioms. Thus, $R_f = R_M$. However, $R_M$ is cyclic on this profile and so $R_M$ cannot rationalize $f$ as $Max(R_M, \{a, b, c\}) = \emptyset$ (but $f(R_N, A)$ cannot be $\emptyset$). Thus, $R_f$ does not rationalize f?!
+\clearpage
+\textbf{It remains to show that n > 3, m > 3 are also problematic.} We are only required to demonstrate that there exists a problematic profile with each $n \geq 3 \land m \geq 3$. \textbf{Deduce that a profile which is this Condorcet 3-cycle profile extended by additional alternatives/voters which are ranked bottom by everyone/completely indifferent to all the alternatives suffices}
+\item \textbf{Theorem (Arrow, 1963): The only transitively rationalizable SCFs that satisfy IIA($_2$) and Pareto-optimality($_2$) violate non-dictatorship($_2$) when $m \geq 3$} (and $n \geq 2$ (this is implicit in all \underline{social} choice results))\\
+Proof: Out of scope
+\end{itemize}
+\clearpage
+\subsection{Strategic voting}
+\begin{itemize}
+\item \textbf{$f$ is manipulable} iff $\exists i \in N: \exists A, R_N, R'_N: \forall j \neq i; (R_j = R'_j \land f(R'_N, A) P_i f(R_N, A))$\\
+\textbf{iff there is some pair of profiles where every voter except voter $i$'s rankings are the same but, \underline{according to $i$'s first ranking}, the choice from the second profile is preferable to $i$ compared to the choice from the first profile} --- this sounds like something we would want an axiom to prevent, but we will see it is actually very often impossible to avoid
+\item{\textbf{$f$ can be manipulated through strategic abstention iff there exists a preference profile for which there exists a voter $i$ for whom not participating (removing their ranking entirely from the profile) will change the chosen alternative to one they prefer more}}
+\item \textbf{$f$ is strategy-proof iff it is not manipulable}
+\item \textbf{Gibbard-Satterthwaite impossibility theorem: A ranked-choice voting rule is strategy proof iff it is dictatorial (there exists a voter for whom their top choice is always the overall winner) or can only ever select at most 2 winners (irrespective of voters' preferences)}\\
+Proof: Out of scope
+\end{itemize}
+\clearpage
+\section{Domain Restrictions}
+\subsection{Foundations}
+\begin{itemize}
+\item Recall that R(U) = the set of all (including weak) rankings over the set of alternatives $U$. \textit{(trigger warning: abuse of notation)} A domain is a $D \subseteq \mathfrak{P}(R(U))$ that is returned by a domain restriction function $D$ such that $\forall U; D(U) \in \mathfrak{P}(\mathfrak{P}(R(U))$
+\item A preference profile $R_N$ over a universe $U$ obeys a domain restriction $D(U)$ iff $\exists Z \in D(U): \forall i \in N; R_i \in Z$. Note this means that \textbf{\underline{although a domain restriction can contain several sets of}\\
+\underline{allowed rankings, any given preference profile must draw only}\\
+\underline{from a single one of these sets}}.
+\item Theorem: \textbf{If $R_M$ is transitive in a domain D, then the SCF rationalized by $R_M$ is strategy-proof}\\
+Proof: First, note that there is indeed a rational SCF induced by $R_M$ as $R_M$ is transitive and so is acyclic. Moreover, as $R_M$ is acyclic in $D$, there is always a Condorcet winner (and our SCF always picks this), thus our SCF is resolute.\\
+Assume for the sake of contradiction that $\exists D: \exists R_M \in D: R_M$ is transitive but manipulable. Let $f$ be the (transitively rationalizable) SCF induced by $R_M$. Let $R_M, R'_M \in D$ be the preference profiles before and after a voter $i$ makes a successful manipulation. Let $a = f(R_M, A)$ and $b = f(R'_M, A)$. By the resoluteness, $a$ and $b$ are singleton sets and so can be treated as alternatives when convenient. As the manipulation was successful, $bP_ia$.\\
+As $f$ must pick the Condorcet winner, $aP_Mb$ and $bP'_Ma$. However, $i$ is the only voter changing their preferences between the profiles, and it is numerically not possible to shift from a strict majority preferring $a$ to $b$ to a strict majority preferring $b$ to $a$ from the action of a single voter?!
+\end{itemize}
+\subsection{Approval voting}
+\begin{itemize}
+\item Dichotomous preferences = Each voter's preferences partition the universe into (at most) 2 equivalence classes of the $I$ relation. That is that $\forall x, y, z; xPy \Rightarrow (xIz \lor yIz)$
+\item \textbf{The domain of dichotomous preferences = $D_{DI}$
+\item Theorem (Inada, 1964): $R_M$ is transitive (and so strategy proof) in $D_{DI}$}\\
+Proof: Let $n(x)$ = number of voters who weakly prefer $x$ to every other alternative. Deduce that $aR_Mb \Leftrightarrow n(a) \geq n(b)$ by the dichotomy. Thus, as $\geq$ is transitive, $R_M$ is transitive
+\item \textbf{Approval voting = $\underset{x \in A}{\argmax}n(x)$}. Thus, approval voting is strategy proof iff voters genuinely have dichotomous preferences
+\end{itemize}
+\subsection{Single-peaked preferences}
+\subsubsection{Median voting}
+\begin{itemize}
+\item \textbf{Single-peaked preferences = there exists a linear order $\succ$ over $U$ such that $\forall x, y, z \in U; (x \succ y \succ z \lor z \succ y \succ x) \Rightarrow (\forall i \in N; xP_iy \Rightarrow yP_iz)$}
+\item \textbf{Let $t_i$ be the top-ranked alternative by voter $i$ (voter $i$'s peak). Let median voter = $(\frac{n+1}{2})^\textrm{th}$ voter in the ordering of the voters by $\succ$ on their $t_i$s} (tie break arbitrarily without loss of generality). We will often assume that there is an odd number of voters. \textbf{Median voter theorem: The top ranked alternative of the median voter is a Condorcet winner}\\
+Proof: Let $c^\ast$ = the alternative chosen by the median voter.\\
+Then, number of voters who voted for $c^\ast$ or a more ``left-wing'' alternative = $|\{i \in N: t_i \preceq c^\ast\}| = \frac{n+1}{2} \geq \frac{n}{2}$.\\
+Symmetrically, number of voters who voted for $c^\ast$ or a more ``right-wing'' alternative = $|\{i \in N: t_i \succeq c^\ast\}| = \frac{n+1}{2} \geq \frac{n}{2}$.\\
+Thus, for every alternative to the left/right than $c^\ast$, there is a majority of voters who would prefer that $c^\ast$ (as it is a more ``right-/left-wing'' alternative) wins. Thus, $c^\ast$ wins every pairwise majority comparison as required.
+\item \textbf{The domain of singe-peaked preferences = $D_{SP}$
+\item Proposition: $R_M$ is transitive in $D_{SP}$}\\
+Proof: Remove the current Condorcet winner from the feasible set at each step until the universe has been exhausted. Observe that the single-peakedness is not affected and so there is a new Condorcet winner. The sequence of the Condorcet winners is a ranking of the entire universe induced by $R_M$
+\end{itemize}
+\clearpage
+\subsubsection{Single-peakedness algorithm}
+\begin{itemize}
+\item Lemma: The bottom-ranked alternative of each voter must be either the left- or right-most in any $\succ$ that witnesses single-peakedness. Thus, if there are more than 2 distinct bottom ranked alternatives in a preference profile, then it cannot be single-peaked\\
+Proof: Obvious with a little thought
+\item Lemma: If there are more than 2 alternatives, then the second-lowest preference of each voter is neither the left- nor the right-most in any $\succ$ that witnesses single-peakedness. Moreover, there exists a $\succ$ that witnesses single-peakedness in which such an alternative is the neighbour of the alternative the voter ranks lowest. Thus, if there are more than 2 distinct k-from-bottom (by induction) ranked alternatives in a preference profile, then it cannot be single-peaked\\
+Proof: Exercise
+\item \textbf{A (linear-time) algorithm to (constructively) decide whether a preference profile is single-peaked:}
+\begin{lstlisting}
+01. Create dummy alternatives $z_l$, $z_r$
+02. Make $z_l$ the leftmost and $z_r$ the rightmost
+03. while $|U| \geq 2$
+    04. $N_x$ := $\{i \in N: \forall y \in U; yP_ix\}$ $\forall x \in U$
+    05. $B$ := $\{x \in U: N_x \neq \emptyset\}$ = $\{x \in U$: $x$ is the
+    bottom choice $\underline{\texttt{within }U}$ of a voter$\}$
+    06. if $|B| > 2$ then return $\texttt{``Not single-peaked''}$
+    07. $l$ := the rightmost alternative in the
+    left-hand part of the order so far
+    08. $r$ := the leftmost alternative in the
+    right-hand part of the order so far
+    09. $N_{xyz}$ := $\{i \in N: xP_iyP_iz\}$
+    10. $L$ := $\{\underline{x \in B}: N_x \cap N_{rxl} \neq \emptyset\}$ =
+    $\{x \in U$: $x$ needs to be the neighbour of $l\}$
+    11. $R$ := $\{\underline{x \in B}: N_x \cap N_{lxr} \neq \emptyset\}$ =
+    $\{x \in U$: $x$ needs to be the neighbour of $r\}$
+    12. if $|L| > 1$ or $|R| > 1$ then
+    return $\texttt{``Not single-peaked''}$
+    13. if $|L \cap R| > 0$ then return $\texttt{``Not single-peaked''}$
+    14. if $L \neq \emptyset$ then place its singleton member
+    immediately to the right of $l$
+    15. if $R \neq \emptyset$ then place its singleton member
+    immediately to the left of $r$
+    16. for $x \in B \setminus (L \cup R)$
+        17. Place $x$ as the neighbour of $l$ or $r$
+        (the unused one if there is only one,
+        if they are both unused either)
+    18. $U$ = $U \setminus B$
+19. There is at most one unordered element
+remaining, if there is one place it in the
+one remaing spot
+20. $\texttt{\underline{Check whether the constructed order witnesses}}$
+$\texttt{\underline{single-peakedness and return accordingly}}$
+\end{lstlisting}
+\end{itemize}
+\subsection{Value-restricted preferences}
+\begin{itemize}
+\item Preferences are single-caved iff they are single-peaked when inverted
+\item \textbf{A preference profile is in the domain of value-restricted preferences ($D_{VR}$) iff every feasible set of size 3 is either single-peaked for all voters or single-caved for all voters or there exists an alternative in the feasible set and a position within the feasible set ($1^\textrm{st}$, $2^\textrm{nd}$, $3^\textrm{rd}$) such that no voter ranked that alternative in that position}
+\clearpage
+\item Lemma 1: If there exists a Condorcet cycle $x_1 P_M ... x_k P_M x_1$ (note this is a Condorcet cycle on arbitrary size), then there exists $i, j \in \{2, ..., k\}$ such that $x_1 P_M x_i P_M x_j P_M x_1$ is a Condorcet cycle also (note this is a Condorcet cycle on 3 alternatives, the smallest possible Condorcet cycle)\\
+Proof: Exercise
+\item Lemma 2: In any Condorcet 3-cycle, each alternative must be ranked (within those in the cycle) in 1st by some voter, and in 2nd by some voter, and in 3rd by some voter\\
+Proof: Exercise
+\item Proposition: If $R_N$ contains a Condorcet cycle, then $R_N$ does not obey $D_{VR}$\\
+Proof: The definition of value-restricted only deals with feasible sets of size 3, but by lemma 1 we can consider all Condorcet cycles to be over 3 alternatives without loss of generality.\\
+We have already shown that $R_N$ is transitive in $D_{SP}$, thus we know single-peakedness must not allow Condorcet cycles. Moreover, single-caved is symmetric to single-peaked.\\
+The contrapositive of lemma 2 is that every $R_N$ which obeys $D_{VR}$ in the only way not yet considered does not have a Condorcet 3-cycle and so from lemma 1 does not have a Condorcet cycle.\\
+Thus, each way in which an arbitrary $R_N$ can obey $D_{VR}$ would mean it necessarily does not contain a Condorcet cycle (the contrapositive of the proposition)
+\item Theorem (Senn, 1966): $D_{VR}$ is the largest domain in which $R_M$ is transitive. That is that \textbf{$R_M$ is transitive in $D$ iff $D \subseteq D_VR$}\\
+Proof: Deduce from the previous proposition that every domain $D \subseteq D_{VR}$ has transitive $R_M$. It remains to show that every $D \supset D_{VR}$ does not have transitive $R_M$.
+\clearpage
+Consider an arbitrary $R_N$ which fails value-restrictedness, we will show that then $R_N$ must contain a Condorcet cycle. As $R_N$ fails value-restrictedness, there exists a feasible set \{a, b, c\} for which every alternative is ranked in every place by some voter (and voters are neither single-peaked nor single-caved over \{a, b, c\}). We will show that (up to relabelling of alternatives) it must thus be the case that $a P_m b P_m c P_m a$, a Condorcet (3-)cycle. Omitted due to time\\
+Corollary: \textbf{As majority rule is transitive in a value-restricted domain (or a subdomain of a value-restricted domain), Arrow's theorem does not hold in such domains}
+\end{itemize}
+\clearpage
+\section{Scoring Rules}
+\subsection{Foundations}
+\begin{itemize}
+\item $f$ is a scoring rule iff $f(R_N, A) = \underset{x \in A}{\argmax}s(x, A)$ where $s(x, A) = \sum_{i \in N} \left((s^{|A|})_{|\{y \in A: yR_ix\}|}\right)$ where $s^{|A|} \in \mathbb{R}^{|A|}$
+\item Thus, a scoring rule is entirely defined by its family of score vectors, $s^1 = (s^1_1), ..., s^m = (s_1^m, ..., s_m^m)$
+\item Proposition: A scoring rule is monotonic iff $s_1 \geq ... s_{|A|}$\\
+Proof:\\
+If: Trivial\\
+Only if: Exercise
+\end{itemize}
+\clearpage
+\subsection{Real voting rules}
+\subsubsection{Scoring rules}
+\begin{itemize}
+\item \textbf{Plurality (First Past The Post): $s = (1, 0, 0, ...)$}
+\item \textbf{Borda method: $s = (|A|-1, |A|-2, |A|-3, ...)$}\textit{. A modified form is used in the Eurovision song contest}
+\end{itemize}
+\subsubsection{Not easily encodable as scoring rules}
+\begin{itemize}
+\item \textbf{Sequential majority comparisons: Label alternatives (i.e. choose} \textit{(how do we fairly chose the hyperparameters of a social choice function?)} \textbf{an ordering over the alternatives) $a, b, c, d, ...$. Pairwise majority compare $a$ and $b$. Pairwise majority compare the winner and $c$. Pairwise majority compare the winner and $d$. $...$}. Sometimes (but not always), the ordering matters\textit{. For example, deciding which version of a law to pass by making irrevocable decisions about which amendments to pass}
+\item \textbf{Plurality with run-off: Each alternative receives 1 point for each voter who ranks it first. Alternatives with the top two number of points become the only options and each voter is deemed to have voted for the one of these they ranked higher}\textit{. Is how French presidential elections are ran. (France actually has the voters re-vote in case they changed their mind as policies etc will evolve when the nature of the second election is announced, but for mathematics we ignore this)}
+\item \textbf{Instant run-off (alternative vote): Delete the alternative ranked first by the lowest number of voters. Repeat with the updated preference profiles until a single candidate remains}. Deduce can stop early if there exists a candidate has more than 50\% of the first place rankings\textit{. Is how Australian elections are ran}
+\end{itemize}
+\subsection{Properties of scoring rules}
+\begin{itemize}
+\item Lemma: Every Condorcet extension satisfies $\textrm{positive-responsiveness}_2$\\
+Proof: Exercise
+\item Proposition: If $m = 2$, Borda and majority rule coincide and is the only anonymous and neutral SCF to be a Condorcet extension\\
+Proof:\\
+Coincide and are Condorcet extension: Easy to see\\
+No other Condorcet extensions: May's theorem was exactly that the only anonymous, neutral, positive-responsive SCF for $m=2$ is majority rule. Thus, by the lemma, we have the required result.
+\item Proposition: Every scoring rule satisfies reinforcement\\
+Proof: Exercise
+\item Theorem (Fishburn): If $m \geq 3$, no scoring rule is a Condorcet extension\\
+Proof: Omitted due to time
+\end{itemize}
+\clearpage
+\section{Kemeney's Rule}
+\subsection{Foundations}
+\begin{itemize}
+\item Fishburn classified SCFs into a hierarchy based on the amount of information they use:
+    \begin{itemize}
+    \item C1 = Only need majority relation $R_M$ (e.g. a graph)
+    \item C2 = Not C1 and need numbers of voters in each direction in each pairwise comparison (e.g. a weighted graph) but not entire preference profile
+    \item C3 = Not C1 or C2, we will give it the entire preference profile $R_N$
+    \end{itemize}
+\item \textbf{A tournament = an oriented complete graph (a directed graph in which there is exactly one edge between each pair of vertices)}. Deduce that $P_M$ is a tournament
+\item \textbf{Theorem (McGarvey, 1953): For every tournament $G=(V,E)$, there exists a preference profile $R_N$ such that $|N|$ is odd and $P_M=E$ and $\forall (x,y)\in E; n_{xy}-n_{yx}=1$\\
+Proof: We will give a construction of such a $R_N$. Fix an arbitrary ordering over $V$ and make this the preference relation of the first voter ($R_1$).} We will use subsequent voters to make controlled tweaks to step $P_M$ towards the required properties until we have enough voters that it fully has the properties. In particular: \textbf{at each step, add 2 voters (thus maintaining oddity) where one voter's top 2 choices are alternatives whose edge we need to flip and the remaining alternatives are in their existing order, and the other voter's is this flipped except the bottom 2 are still in their new order}. It is possible to see that this preserves the invariant that all margins are 1 and that this only flips the desired edge
+\end{itemize}
+\subsection{Kemeney's Rule}
+\begin{itemize}
+\item $f$ is a social preference function (SPF) iff $f: R(U)^N \mapsto F(R(U))$ i.e. returns one or more rankings rather than one or more choices
+\item Theorem: No SCF that satisfies reinforcement (i.e. is a scoring rule), is a Condorcet extension (for $m \geq 3$). However, there is exactly one SPF that is a Condorcet extension (generalised to SPFs in the obvious way) which satisfies reinforcement (now have to agree on the entire ranking instead of only the top choice): Kemeny's rule\\
+Proof: Out of scope
+\item \textbf{$f_{\textrm{Kemeny}}(R_N) = \underset{R \in R(U)}{\argmax}\left(\sum_{i \in N} |R \cap R_i|\right) = \underset{R \in R(U)}{\argmax}\left(\sum_{a \in U} \sum_{b \in U: aRb} \sum_{R_i \in R_N} \mathds{1}(aR_ib)\right)$}. This is not quite a scoring rule, as it scores rankings based on the number of pairwise agreements with the rankings of voters instead of scoring alternatives based on their positions in voters' rankings
+\item Theorem: \textbf{A ranking is chosen by Kemeny's rule iff it is an \underline{acyclic} sub graph of the C2 graph (the complete graph where the edge from x to y is weighted by the number of voters who prefer x to y) with maximal total weight}\\
+Proof: Omitted due to time
+\item Theorem: Kemeny is the only neutral S\underline{P}F that satisfies both reinforcement and \textbf{Condorcet consistency (if x is ranked \underline{immediately} above y in the chosen ranking, then the majority of voters rank x \underline{(not necessarily immediately)} above y)}\\
+Proof: Out of scope
+\subsection{Hardness}
+\item Lemma (Karp, 1972): Feedback-Arc-Set (FAS) = ``Given a directed graph $G=(V,E)$ and a $k \in \mathbb{N}$, is it possible to make $G$ acyclic by removing at most $k$ edges?'' is NP-Complete\\
+Proof: Out of scope
+\item Lemma: FAS restricted to tournaments (FAST) is NP-Complete\\
+Proof: Out of scope
+\item Theorem (Bartholdi, 1989): Kemeny-Ranking-Decision (KRD) = ``Given $R_N$ and $s$, is there a ranking with Kemeny score over $R_N$ of at least $s$?'' is NP-Complete\\
+Proof: $\in$ NP: Such a ranking is a witness. Computing the Kemeny score of a single ranking is poly-time, it is only the fact that there is $n!$ rankings to consider that means we are not in $P$ (unless P$=$NP)\\
+$\in$ NP-Hard: We will reduce from FAST. Use McGarvey's construction to convert the given tournament $G$ to a preference profile $R_N$. This takes time $O(m^2)$. As $G$ is complete and $m = |V|$ \textit{(sorry graph theorists, but $m$ and $n$ already have meanings in social choice)}, $|E| = \frac{m(m-1)}{2}$.\\
+$R_N$ has been constructed so that $P_M$ is isomorphic to $G$. By the construction of $R_N$, every majority has $\frac{n+1}{2}$ voters for it and $\frac{n-1}{2}$ voters against it and so has margin 1. By a previous theorem, finding a Kemeny ranking is equivalent to finding the smallest weight set of edges in the graph of $P_M$ weighted by the margins of the majorities that when deleted makes this graph acyclic.\\
+Our FAST instance is a ``Yes'' instance iff at most $k$ edges have to be deleted from $G$ to make it acyclic iff edges with total margin of at most $k$ have to be deleted to make $P_M$ acyclic iff $R_N$ has a ranking with Kemeny score at least $|E|\frac{n+1}{2} + k(\frac{n-1}{2}-\frac{n+1}{2}) = \frac{m(m-1)(n+1)}{4}-k$
+\item Proposition: Kemeny-Ranking-Search (KRS) = ``Find a Kemeny ranking (a ranking with maximal Kemeny score) for $R_N$''. KRD $\leq_P$ KRS. Thus, as KRD $\in$ NP-Complete, computing a Kemeny ranking is NP-Hard\\
+Proof: Given a ranking from an oracle for KRS we can compute its Kemeny score in poly-time, call this score s*. Return $\mathds{1}(s \leq s*)$ where $s$ is from the KSD instance.
+\item Theorem: KSD is NP-Complete (and so KRS is NP-Hard) even if the value of $n$ is fixed (i.e. solely based on the asymptotic in $m$) if $n$ is even and $\geq 4$ or n is odd and $\geq 7$. \textit{It is an open question where the odd part extends to $n=5$ (or $n=3$) (whereas finding a Kemeny ranking is trivial if there are at most 2 voters)} \\
+Proof: Very much out of scope
+\end{itemize}
+\clearpage
+\section{Tournament Solutions}
+\subsection{Foundations}
+\subsubsection{Motivation}
+\begin{itemize}
+\item \textbf{An SCF f is binary iff (if a pair of preference profiles agree in base relation, then they always agree in choice)} iff $\forall A, R_N, R'_N;$\\
+$(\forall x, y \in A; f(R_N, \{x, y\}) = f(R_N, \{x, y\}) = f(R'_N, \{x, y\})) \Rightarrow f(R_N, A) = f(R'_N, A)$
+\item \textbf{An SCF is majoritarian iff it is anonymous, neutral, binary, and $\textrm{positive-responsive}_2$}. By May's theorem, if an SCF is majoritarian, then $R_M$ is its base relation. Thus, \textbf{every majoritarian SCF is a C1 function} (however some C1 functions are not majoritarian \textit{(however these are not very desirable functions)})
+\clearpage
+\item Majoritarian SCFs are positive-responsive in spite of Arrow's theorem because they can be non-transitive and non-rationalizable. In this chapter, we will explore how much we need to weaken transitive rationalizability to permit SCFs that are otherwise good
+\item We denote a majoritarian SCF as $F(A, P_M)$ instead of $f(R_N, A)$
+\item \textbf{An SCF $f'$ is finer than an SCF $f$ iff $\forall R_N, A; f'(R_N, A) \subseteq f(R_N, A)$}
+\item Proposition: If there is only 2 candidates, then majority rule is strategy proof\\
+Proof: Trivial
+\end{itemize}
+\clearpage
+\subsubsection{Domination}
+\begin{itemize}
+\item \textbf{Dominion of $x$ = $D(x)$ = $\{y \in A: xP_My\}$}
+\item \textbf{Dominators of $x$ = $\overline{D}(x)$ = $\{y \in A: yP_Mx\}$}
+\item Deduce that $\{D(x), \overline{D}(x), x\}$ is a partition of $A$
+\item \textbf{$D^0(x) = \{x\}$, and $D^{k+1}(x) = D^k(x) \cup \bigcup_{y \in D^k(x)} D(y)$ = all nodes reachable within $k+1$ hops from $x$ in the $P_M$ graph, and $D^\ast(x) = \bigcup_{k \geq 0}D^k(x)$ = all nodes reachable from x}.\\
+Mutatis mutandis for $\overline{D}$ (reverse of $P_M$ graph (nodes from which $x$ can be reached in $P_M$))
+\end{itemize}
+\subsection{Top Cycle}
+\begin{itemize}
+\item \textbf{$B \subseteq A$ is a dominant set iff $\forall x \in B; \forall y \in A \setminus B; xP_My$ iff $B$ is a cut of $P_M$ in which all edges crossing the cut are leaving it. $\textrm{Dom}(A, P_M)$ = the set of all dominant sets}
+\item Theorem: $\forall B, C \in \textrm{Dom}(A, P_M); B \subseteq C \lor C \subseteq B$. That is that, \textbf{$\subseteq$ is a total ordering over $\textrm{Dom}(A, P_M)$}\\
+Proof: Assume for the sake of contradiction $\exists B, C \in \textrm{Dom}(A, P_M): B \not\subseteq C \land C \not\subseteq B$. Then, $\exists b \in B: b \notin C \land \exists c \in C: c \notin B$. Thus, $cP_Mb$ and $bP_Mc$?!\\
+Corollary: The minimal dominant set is unique, we call this the Smith set
+\item \textbf{Top cycle = $TC(P_M, A)$ = min$(\subseteq, \textrm{Dom}(A, P_M))$}
+\item Proposition: \textbf{TC is a Condorcet extension}\\
+Proof: If a Condorcet winner exists, the singleton containing it is a dominant set. Clearly this must be the minimal dominant set.
+\item Proposition: If $m \geq 4$, then there exists a tournament for which TC chooses Pareto dominated alternatives (as well as Pareto dominating alternatives). That is that TC is not Pareto-optimal\\
+Proof:\\
+Base case: $(1abcd, 1bcda, 1dabc)$ has top cycle $\{a, b, c, d\}$ but $c$ is Pareto dominated by $b$\\
+Inductive step: Exercise
+\item Proposition: \textbf{An SCF f satisfies $\beta_+$ iff $\forall R_N; \forall A \in F(U); \forall B \subseteq A; B = \emptyset \lor f(R_N, B) \subseteq f(R_N, A)$. TC satisfies $\beta_+$ and moreover is the finest majoritarian SCF to do so}
+Proof: Out of scope
+\item Proposition: Transitive rationalizability $\Rightarrow \beta_+$\\
+Proof: Exercise
+\clearpage
+\item A polynomial time algorithm for finding a top cycle: For each $x \in A$ run breadth-first search from $x$ in \underline{the reverse of} $P_M$ (and thus obtain $\overline{D}^\ast(x)$). The top cycle is the result with minimal cardinality. Each search is $O(m^2)$ time and so the whole algorithm runs in $O(m^3) = O(|V|^3) = O(|E|^{1.5})$ time
+\item Proposition: Dom$(A, P_M) = \{\overline{D}^\ast(x): x \in A\}$ and so the algorithm is correct\\
+Proof: Exercise
+\item \textbf{A linear time algorithm for finding a top cycle: Find the $x \in A$ with the most outgoing edges in $P_M$ ($x = \underset{x \in A}{\argmax}|\{y \in A: xP_my\}|$). Run breadth-first search from $x$, this is the top cycle}. This takes $O(m + m^2) = O(m^2) = O(|E|)$ time
+\item Proposition: \textbf{If $x$ is a Copeland winner (wins the most pairwise majority comparisons), then $x \in TC$}. Thus, the optimization we made to the algorithm to obtain the linear time algorithm is correct\\
+Proof: We will use proof by contrapositive. Pick an arbitrary element $x$ not in the top cycle. Then, as the top cycle is a dominant set, $x$ must lose against each element of the top cycle. As every element of the top cycle beats every element outside the top cycle, they beat both $x$ and everything that $x$ beats. Thus, they have higher Copeland score than $x$ and so $x$ cannot be a Copeland winner. Thus, we have the required result
+\end{itemize}
+\clearpage
+\subsection{Uncovered Set}
+\begin{itemize}
+\item \textbf{$xCy$ iff $x$ covers $y$ iff $D(x) \supset D(y)$ iff $\overline{D}(x) \subset\overline{D}(y)$}
+\item Lemma: $xCy \Rightarrow xP_My$\\
+Proof: Recall that $xCy \Leftrightarrow D(x) \supset D(y)$. $x$ cannot be in $D(x)$ as by definition an alternative cannot dominate itself. Thus, $x$ cannot be in $D(y)$ due to the subset relation. As $x$ is not in $D(y)$, it is not the case that $yP_Mx$, and so (as $P_M$ is a complete relation) it is the case that $xP_My$ as required.
+\item Proposition: $(xCy \land yCz) \Rightarrow xCz$. That is that the covering relation is transitive\\
+Proof: $(xCy \land yCz) \Leftrightarrow (D(x) \supset D(y) \land D(y) \supset D(z))\Rightarrow$\\
+$D(x) \supset D(z) \Leftrightarrow xCz$
+\item \textbf{Uncovered-Set = $UC(A, P_M)$ = Max$(C, A)$ = $\{x \in A: \not \exists y \in A: yCx\}$}
+\item \textbf{Theorem: $UC(A, P_M) = \{x \in A: D^2(x) = A\}$}\\
+Proof: Recall that $x \in UC$ iff $\forall y \in A: \neg yCx$. Thus, we need to show that $D^2(x) = A$ iff $\forall y \in A: \neg yCx$. This is equivalent to $\exists y \in A: y \notin D^2(x)$ iff $yCx$. $yCx \Rightarrow yP_Mx \Rightarrow \neg xP_My \Rightarrow y \notin D^2(x)$.\\
+Omitted due to time
+\item A near-linear time algorithm for UC:
+\begin{lstlisting}
+$M$ := GetAdjacencyMatrix($P_M$) // $O(m^2)$
+$U$ := $M^2 + M + I$ // 2-hops + 1-hops + 0-hops
+return $\{i \in A: \forall j \in A; U_{ij} \neq 0\}$
+\end{lstlisting}
+Recall from CS260 that squaring the $m\times m$ matrix $M$ can be done in less than $O(m^3) = O(|E|^{1.5})$ time but it is not known how to get exactly $O(m^2) = O(|E|)$ time
+\clearpage
+\item \textbf{Proposition: UC is a Condorcet extension}\\
+Proof: Let $x$ be a Condorcet winner. Then, $\forall y \in A \setminus \{x\}; xCy$. Thus, $x$ covers every element. Thus, $x$ is the only uncovered element. Thus, UC = $\{x\}$ as required
+\item Proposition: \textbf{An SCF f satisfies $\gamma$ iff $\forall R_N; \forall A, B \in F(U); S(A) \cap S(B) \subseteq S(A \cup B)$. UC satisfies $\gamma$ and moreover is the finest majoritarian SCF to do so}\\
+Proof: Out of scope
+\item Proposition: $\beta_+ \Rightarrow \gamma$\\
+Proof: Out of scope
+\item Proposition: UC is Pareto-optimal\\
+Proof: Exercise
+\subsection{Banks Set}
+\item Even though UC is Pareto-optimal, \textbf{finer functions must also be Pareto-optimal} and will turn out to still obey other good axioms
+\item \textbf{$B \subseteq A$ is a transitive subset iff ${P_M}_{\restriction B}$ is transitive. Trans$(A, P_M)$ = the set of all transitive subsets of $A$. Banks-Set = $BA(A, P_M)$ = $\bigcup_{B \in \textrm{Trans}(A, P_M)} \textrm{Max}(P_M, B)$}
+\item Proposition: \textbf{$x \in BA$ $\Leftrightarrow$ $x$ is a Condorcet winner in a transitive subset $B$ of $A$ for which there is no further element that can be added without breaking transitivity}\\
+Proof: Exercise\\
+Corollary: \textbf{BA is a Condorcet extension}
+\item Theorem (Brandt, 2011): \textbf{An SCF f satisfies $\rho^+$ iff $\forall R_N; \forall A \in F(U); \forall x \in A; \overline{D}(x) \neq \emptyset \Rightarrow S(\overline{D}(x)) \subseteq S(A)$. BA satisfies $\rho^+$ and moreover is the finest majoritarian SCF to do so}\\
+Proof: Very much out of scope
+\item Proposition: $\gamma \Rightarrow \rho^+$\\
+Proof: Exercise
+\item Theorem (Woeginger, 2003): Deciding whether a given alternative is a Bank's winner is NP-Complete and so computing BA is NP-Hard\\
+Proof: Out of scope
+\end{itemize}
+\subsection{Bipartisan Set}
+\begin{itemize}
+\item \textbf{Let p be a probability distribution over A. Then, probability margin of $(x \in A)$ = $m_p(x)$ = $\sum_{y \in D(x)} p(y) - \sum_{y \in \overline{D}(x)} p(y)$.\\
+A probability distribution $p$ is balanced iff $\forall x; (p(x) > 0 \Leftrightarrow M_p(x) = 0) \land (p(x) = 0 \Leftrightarrow m_p(x) < 0)$}. As $p$ is a probability distribution, $p \geq 0$ and so $p(x) > 0 \Leftrightarrow p(x) \neq 0$
+\item \textbf{$p$ is balanced iff no alternative has positive margin and exactly the alternatives with zero probability have negative margin}
+\item Proposition: Every tournament has exactly one balanced probability distribution\\
+Proof: Out of scope
+\item \textbf{Bipartisan-Set = $BP(A, P_M)$ = $\{x \in A: p(x) > 0\}$ where $p$ is the balanced distribution for $(A, P_M)$}.\\
+As p is balanced, $\{x \in A: p(x) > 0\}$ = $\{x \in A: m_p(x) = 0\}$
+\item \textit{BP corresponds to the alternatives that can ever (this says ever not never) be chosen under the (mixed strategy) Nash equilibrium in a 2-player zero-sum matrix game where each player chooses an alternative and gets utility $1$ if they dominate the other, $0$ if they pick the same, $-1$ if they are dominated by the other}
+\clearpage
+\item $BP \subseteq UC$. That is that $BP$ is finer than $UC$\\
+Proof: Exercise\\
+Corollary: BP is Pareto optimal
+\item Proposition: BP is a Condorcet extension\\
+Proof: If there exists a Condorcet winner $x$, $p$ must chose $x$ with probability 1 to be balanced. Thus, $x$ is the only alternative for which $p(x) > 0$
+\item A choice function $f$ is stable iff $\forall A, B \in F(U); \forall x \subseteq A \cap B; x = S(A \cup B) \Leftrightarrow x = S(A) = S(B)$
+\item Proposition: Most SCFs (including UC and BA) are not stable, but TC and BP are\\
+Proof: Exercise
+\item Proposition: Quasi-transitive rationalizability $\Rightarrow$ stability\\
+Proof: Exercise
+\end{itemize}
+\clearpage
+\section{Committee Functions (Proportional Representation)}
+\subsection{Foundations}
+\begin{itemize}
+\item Now, instead of trying to chose a single leader, we have a parliament with a fixed number of seats to fill
+\item As every possible combination of alternatives would be too many choices for voters to rank, either alternatives will arrange themselves into parties and each voter chooses one party to support (apportionment setting) or voters will use approval voting for individual alternatives (approval-based setting)
+\item Every committee function induces an SCF by calling it with a seat count of 1
+\end{itemize}
+\subsection{Apportionment setting}
+\subsubsection{Apportionment methods}
+\begin{itemize}
+\item \textbf{$h \in \mathbb{N}_{>0}$ is the committee size (number of seats). There are parties $1, ..., p$ and $v_1, ..., v_p$ are the number of votes for each party. We wish to compute a seat distribution $(x_1, ..., x_p) \in \mathbb{N}^p$ such that $\sum_{i \in \{1, ..., p\}} x_i = h$}\\
+\item \textbf{Define $v_+ = \sum_{i \in \{1, ..., p\}} v_i$}. $x_i = h\left(\frac{v_i}{v_+}\right)$ would give perfect proportional representation but fractional seats are not allowed. The difficulty of the committee function problem is rounding to integers so that: the total is exactly $h$, and the rounding is as fair as possible
+\item Apportionment is applicable to assigning seats proportional to their population to states to fill as they see fit within a larger system (e.g. United States House of Representatives and EU Parliament) by taking states as alternatives and their populations as the numbers of votes\textit{. However, in the real world, these tend be determined more by realpolitik than formulas}
+\item \textbf{Quota of $i$ = $q_i$ = $h\left(\frac{v_i}{v_+}\right)$}. Note that $q_i = \frac{v_i}{\left(\frac{v_+}{h}\right)}$. Call $\frac{v_+}{h}$ (the number of votes each seat ideally represents) the Hare quota
+\item \textbf{Hamilton} \textit{(the very same \$10 founding father)} \textbf{method: Give $\lfloor q_i \rfloor$ seats to each $p_i$ then assign any left over seats \underline{one per party} in decreasing order of remainder ($q_i - \lfloor q_i \rfloor$)}. \textit{The German parliament switched to this in 1987 from D'Hont to try to reduce the disadvantage suffered by smaller parties}
+\item \textbf{D'Hont method: Find a $d$ such that $\sum \lfloor \frac{v_i}{d} \rfloor = h$. $p_i = \lfloor \frac{v_i}{d} \rfloor$}. Deduce that there is an interval of such $d$ and they all give the same seat assignments. Moreover, deduce that we can use binary search (starting from the Hare quota which upper bounds it) to find a suitable $d$.\\
+\textit{Invented by Thomas Jefferson (American) in 1792 as a competitor to Hamilton's method (also of 1792) but Dutchman Victor D'Hondt independently re-invented it in 1878 and his is the name that stuck. Having being lobbied by Thomas Jefferson, George Washington exercised the first ever presidential veto in order to adopt Jefferson's method instead of Hamilton's method that Congress had originally voted for. The Scottish and Welsh parliaments use D'Hont and have done since their formation in 1999}
+\item \textbf{An alternative algorithm for D'Hont: Tabulate $\frac{v_i}{j}$ for increasing $j$. Select the $h$ largest entries. Give each party one seat for each of their entries that are chosen}
+\item \textbf{Using only odd $j$ \underline{in the above algorithm (not the one before} \underline{that)} gives the Webster method instead}.\\
+\textit{Invented by American Daniel Webster in 1832 and independently re-invented by Frenchman André Sainte-Laguë in 1910.\\
+America switched congressional apportionment of seats to states from D'Hont to Webster in 1840 but also varied the number of seats on each run (after each 10-yearly census) so that Hamilton and Webster give the same allocation. America then switched from this to its current method (out of the scope of this module) in 1940.\\
+The German parliament currently uses the Webster method for elections having switched to this from Hamilton in 2009 with the intention of reducing the disadvantage suffered by smaller parties}
+\end{itemize}
+\clearpage
+\subsubsection{Reasonableness Axioms}
+\begin{itemize}
+\item \textbf{Impartiality (corresponds to neutrality) = vote counts are the only information used}
+\item \textbf{Exactness = If quotas are integer, then seat allocations of the quotas is the unique outcome}
+\item \textbf{Homogeneity = If all votes are linearly transformed in the same way, then the outcome does not change}
+\item \textbf{Concordance = If an alternative has \underline{strictly} more votes than another, then it has \underline{at least} as many seats = $v_i > v_j \Rightarrow x_i \geq x_j$}
+\end{itemize}
+\clearpage
+\subsubsection{Fairness Axioms}
+\begin{itemize}
+\item \textbf{Quota = Let $M$ be the apportionment method. $\forall (v, h); \forall x \in M(v, h); x \in \{\lfloor q_i \lfloor, \lceil q_i \rceil\}$. Can be decomposed into the weaker notions of lower quota ($x_i \geq \lfloor q_i \rfloor$) and upper quota ($x_i \leq \lceil q_i \rceil$)}
+\item \textbf{Committee monotonicity = Increasing $h$ cannot decrease any party's vote count}. \textit{Violating committee monotonicity is what did it in for Hamilton's method for the man on the street even though Jefferson/D'Hont violates quota instead}
+\item \textbf{Population monotonicity = (Irrespective of whether the number of votes changes and whether other parts of the profile also change) If $v_i$ increases and $v_j$ decreases, then it is not the case that both $x_i$ decreases and $x_j$ increases}
+\item Hamilton is constructed to obey quota but does violate committee monotonicity and population monotonicity
+\item D'Hont obeys committee monotonicity and population monotonicity but violates quota (but obeys lower quota)
+\item \textbf{Theorem (Balinski and Young, 1982): There is no concordant apportionment method that satisfies both quota and population monotonicity}.\\
+Proof: It can be shown by exhaustion that for $h = 7$, $v = (752, 101, 99, 98)$, $v' = (753, 377, 96, 97)$ every distribution that obeys concordance and quota results in $P_4$ winning a seat at the expense of $P_1$ in the transition from $v$ to $v'$
+\end{itemize}
+\subsection{Approval-based setting}
+\subsubsection{Approval-based rules}
+\begin{itemize}
+\item In this setting we use $k$ for the number of seats instead of $h$
+\item \textbf{$A_i \subseteq C$ = the set of candidates approved by voter $i \in N$}
+\item \textbf{$W$ is the conventional notation for a chosen committee}
+\item The naive rule is \textbf{approval voting (AV} \textit{(unfortunately clashes with the UK term for instant-runoff: alternative vote (AV))}\textbf{): $N_c = \{i \in N: c \in A_i\}$ = the set of approvers of $c$. $n_c = |N_c|$ = the approval score of $c$. Return the candidates with the top $k$ approval scores}
+\item Proposition: AV maximizes $\sum_{i \in N} |A_i \cap W|$\\
+Proof sketch: Deduce that $n_c = \sum_{i \in N} |\{c\} \cap A_i\}|$. Thus, $\sum_{i \in N} |A_i \cap W| = \sum_{i \in N} \sum_{c \in W} |\{c\} \cap A_i| = \sum_{c \in W} n_c$
+\item Although AV maximizes total utility (above), it is actually very unproportional. \textbf{AV suffers from the so called dictatorship of the majority: if more than half of the voters approve a candidate, then that candidate will be in a committee returned by AV}. Thus, if 51\% voters agree on some full committee, then the views of the remaining 49\% are irrelevant.
+\item \textbf{Satisfaction-AV (SAV): Give each voter 1 vote to divide evenly between candidates, rank candidates based on the total they receive over these fractional votes, elect the top $k$}
+\item Formally, SAV: $\textrm{Sat}(i, W) = \frac{|A_i \cap W|}{|A_i|}$. Return $\underset{W: |W| = k}{\argmax}\sum_{i \in N}\textrm{Sat}(i, W)$.
+\item SAV does not suffer from dictatorship of the majority, but can have dictatorship of the minority (which is obviously worse)!
+\clearpage
+\item \textbf{Greedy-AV = At each step give the candidate approved by the greatest number of voters who are unrepresented so far ($A_i \cap W = \emptyset$) a seat. Stop once the committee is full}. Completely ignoring voters once they have any amount of representation whatsoever is clearly not ideal
+\item \textbf{Proportional-AV (PAV): Score$(i, W) = \sum_{j=1}^{|W \cap A_i|} \frac{1}{j}$. Return $\underset{W: |W| = k}{\argmax}\sum_{i \in N}\textrm{Score}(i, W)$}. Score assigns each voter utility of $\frac{1}{j}$ for the $j^\textrm{th}$ candidate in the committee they approved and so incorporates into Greedy-AV the principle of diminishing marginal returns
+\item \textbf{PAV is NP-Hard so instead a greedy approximation SequentialPAV (SeqPAV) is used. SeqPAV: At each step give the candidate with the greatest Score a seat. Stop once the committee is full}
+% \clearpage
+% \item Proposition: Approval is a generalisation of apportionment\\
+% Proof: Each approval rule can be used for apportionment by creating $k$ dummy candidates for each party and having each voter approve exactly the candidates that belong to their party\\
+% Example: It is fairly easy to see that PAV corresponds to D'Hont
+\end{itemize}
+\clearpage
+\subsubsection{Axioms}
+\begin{itemize}
+\item \textbf{A group of voters $S \subseteq N$ is cohesive iff $\bigcap_{i \in S} A_i \neq \emptyset$}. Note that $\bigcap_{i \in S} A_i$ = the set of candidates which every member of the group approves
+\item \textbf{A committee W satisfies the Justified Representation (JR) axiom iff if $S$ is a cohesive group with $|S| = \lceil \frac{n}{k} \rceil$, then $W \cap \bigcup_{i \in S} A_i \neq \emptyset$}. Intuitively, it feels like the requirement should have been that every cohesive group that is large enough to deserve a seat has an element they agree on included rather than \textbf{every cohesive group that is large enough to deserve a seat should have an element that a member approved included}, but then there would exist profiles for which no rule can satisfy it (as there are more cohesive groups (with distinct cohesive elements) for it than there are seats available), so we have to settle for this much weaker requirement.
+\item AV, SAV, SeqPAV all fail JR albeit on unnatural instances
+\item Proposition: GreedyAV satisfies JR\\
+Proof: Recall that GreedyAV discards voters once any of their approved options have been given a seat. Assume for the sake of contradiction there exists a cohesive group $S$ of size $\lceil \frac{n}{k} \rceil$ that is totally unrepresented in a GreedyAV committee W. Then, by the greediness, at each of the $k$ steps there was some alternative that still had at least $\lceil \frac{n}{k} \rceil$ totally unrepresented at that point voters who approved it, otherwise an element $W$ is cohesive for would've been chosen. As $S$ was a witness to a failure of JR, after these $k$ lots of pairwise disjoint groups of voters each of size $\lceil \frac{n}{k} \rceil$ have been represented and so the algorithm finished, none of the $\lceil \frac{n}{k} \rceil$ voters in W have been represented, but then there are more than $n$ voters in total?!
+\clearpage
+\item Theorem (Brill et al, 2014): PAV satisfies JR\\
+Proof: Assume for the sake of contradiction there exists a cohesive group $S$ of size $\lceil \frac{n}{k} \rceil$ that is totally unrepresented in a PAV committee W. Let $x$ be a candidate $S$ is cohesive for. Adding $x$ to $W$ will increase the PAV score by $1\left(\lceil \frac{n}{k} \rceil\right)$. We will show that there exists a $m$ in $W$ such that the loss in PAV score from removing $m$ is strictly less than $\left(\lceil \frac{n}{k} \rceil\right)$. Thus, $W$ is not actually a PAV committee as our updated $W$ has strictly higher PAV score.\\
+As $S$ is totally unrepresented in $W$, the PAV score of $W$ arises from at most $|N \setminus S|$ voters. Note that $|N \setminus S| = n - \lceil \frac{n}{k} \rceil \leq n - \frac{n}{k} = (\frac{n}{k})(k-1)$. The average loss in PAV score from removing a single element from $W$ = $\frac{\sum_{i \in N \setminus S} \sum_{j \in [|A_i \cap W|]} \frac{1}{j} - \sum_{j \in [|A_i \cap W|]\setminus \{|A_i \cap W|\}} \frac{1}{j}}{|W|} = \frac{\sum_{i \in N \setminus S} \frac{1}{[|A_i \cap W|]}}{k} \leq \frac{((\frac{n}{k})(k-1))(1)}{k} < \frac{n}{k}$. It cannot be case that every element of a mean is strictly greater than the mean, thus we have the required result
+\item \textbf{A committee $W$ satisfies the Extended Justified Representation (EJR) axiom iff $\forall l \in [k]; \forall S \subseteq N; (|S| \geq l\left(\frac{n}{k}\right) \land |\bigcap_{i \in S} A_i| \geq l) \Rightarrow \exists i \in S: |W \cap A_i| \geq l$}
+\item Proposition: At $l=1$, EJR$=$JR\\
+Proof: Easy to see with a little thought
+\item Proposition: Although GreedyAV satisfies JR, it fails EJR\\
+Proof: Consider approvals: $98 \times \{a, b\}, 1 \times \{c\}, 1 \times \{d\}$ and $k = 3$. GreedyAV returns $\{\{a, c, d\}, \{b, c, d\}\}$. EJR requires the cohesive group over \{a, b\} of size $\frac{98}{100}$ to be represented by $\frac{2}{3}$ seats as $\frac{98}{100} \geq 2 \times \frac{100}{3}$ but Greedy AV only gives them $\frac{1}{3}$ seats
+\item Theorem (Brill et al, 2014): Thanks to its use of the harmonic series, PAV satisfies EJR. However, recall that PAV is NP-Hard\\
+Proof sketch: Extend the proof for JR and note the harmonicness is now required
+\end{itemize}
+\end{flushleft}
+\end{document}
