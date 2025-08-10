@@ -43,7 +43,6 @@ Images copied from module materials have been removed for copyright reasons.
 #### IB104: Mathematical Programming 1
 - [IB104 Notes](Y1/IB104.pdf)  
 - [External resource (Video): Simplex Algorithm: What's actually going on by TLMaths](https://www.youtube.com/watch?v=pWeEz3O-ZRg)  
-
 ### Year 2 (2023/24)
 #### CS241: Operating Systems and Computer Networks
 - [CS241 Notes](Y2/CS241.pdf)  
@@ -100,7 +99,11 @@ Images copied from module materials have been removed for copyright reasons.
 - [CS352 Quiz](https://app.studius.ai/decks/9a957e3ffa81ccf0f5f084fa33b2cba5?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
 - [External resource (Blogpost): What is Scrumban? by Corey Ladas](https://agilealliance.org/scrumban/)  
 - [External resource (Video): Scrum to Scrumban in 6 Steps by Gary Straughan](https://www.youtube.com/watch?v=fgT4AaKcBUA)  
+- [External resource (Book): Effective Project Management: Traditional, Agile, Extreme, Hybrid by Robert K. Wysocki](https://pugwash.lib.warwick.ac.uk/record=b3756274)  
+- [External resource (Book): Toyota Production System: Beyond Large-Scale Production by Taiichi Ohno](https://pugwash.lib.warwick.ac.uk/record=b1211894)  
+- [External resource (Book): Don't Park Your Brain Outside: A Practical Guide To Improving Shareholder Value with SMART Management by Francis T. Hartman](https://archive.org/details/dontparkyourbrai00fran)  
 - [External resource (Manga): The Five Dysfunctions of a Team: An Illustrated Leadership Fable by Patrick M. Lencioni and Kensuke Okabayashi](https://ebookcentral.proquest.com/lib/warw/detail.action?docID=832248)  
+- [External resource (Blogpost): Let Us Dismantle the Artifice of Standup by Valerie Burzynski](https://www.valerieburzynski.com/blog/let-us-dismantle-the-artifice-of-standup/)  
 #### CS356: Approximation and Randomised Algorithms
 - [CS356 Notes](Y3/CS356.pdf)  
 - [CS356 Quiz](https://app.studius.ai/decks/d9747d1e8e16a13fff097749f17a18a0?invite=UKtFiMdOcZQst3yCpqAznIb5aag1)  
